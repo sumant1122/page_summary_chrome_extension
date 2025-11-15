@@ -53,7 +53,7 @@
       headers.Authorization = `Bearer ${apiKey}`;
     }
      if (apiProvider === 'openrouter') {
-      headers['HTTP-Referer'] = 'http://localhost:3000'; // Replace with your extension's ID
+      headers['HTTP-Referer'] = `chrome-extension://${chrome.runtime.id}`;
       headers['X-Title'] = 'Page Summarizer';
     }
 
