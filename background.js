@@ -4,13 +4,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const summary = request.summary;
     const filename = request.filename;
 
-    const blob = new Blob([summary], { type: 'text/markdown' });
-    const url = URL.createObjectURL(blob);
+    const dataUrl = 'data:text/markdown;charset=utf-8,' + encodeURIComponent(summary);
 
     console.log('Calling chrome.downloads.download with filename:', filename);
     chrome.downloads.download(
       {
-        url: url,
+        url: dataUrl,
         filename: filename,
         saveAs: true,
       },
