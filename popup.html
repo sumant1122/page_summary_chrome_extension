@@ -1,20 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8" />
   <title>Page Summarizer</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <div id="container">
-    <button id="summarize-button">Summarize</button>
-    <div id="summary-container" style="display: none;">
-      <h2>Summary</h2>
-      <div id="summary"></div>
-      <button id="save-button">Save</button>
-      <div id="save-status"></div>
+  <div class="popup">
+    <header class="popup__header">
+      <div class="icon-pill" aria-hidden="true">
+        <svg class="icon" viewBox="0 0 24 24" role="img" focusable="false">
+          <path d="M13 2L3 14h7l-1 8 10-12h-7z" />
+        </svg>
+      </div>
+      <div>
+        <h1>Page Summarizer</h1>
+        <p class="subtitle">Capture the key points from any page in seconds.</p>
+      </div>
+    </header>
+
+    <div class="popup__actions">
+      <button id="summarize-button" class="primary-button">
+        Summarize Page
+      </button>
+      <div id="loading" class="status status--loading" style="display: none;">
+        <span class="spinner" aria-hidden="true"></span>
+        <span>Analyzing content…</span>
+      </div>
+      <div id="error" class="status status--error" style="display: none;"></div>
     </div>
-    <div id="loading" style="display: none;">Loading...</div>
-    <div id="error"style="display: none;"></div>
+
+    <section id="summary-container" class="card" style="display: none;">
+      <div class="card__header">
+        <div>
+          <h2>Summary</h2>
+          <p class="card__subtitle">Highlights from this page</p>
+        </div>
+        <button id="save-button" class="ghost-button">Save</button>
+      </div>
+      <div id="summary" class="card__body"></div>
+      <div id="save-status" class="status status--muted"></div>
+    </section>
   </div>
   <script src="popup.js"></script>
 </body>

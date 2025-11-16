@@ -25,7 +25,7 @@
       case 'openrouter':
         apiUrl = 'https://openrouter.ai/api/v1/chat/completions';
         body = {
-          model: 'google/gemini-flash-1.5', // Or another model supported by OpenRouter
+          model: 'openai/gpt-oss-20b:free', // Or another model supported by OpenRouter
           messages: [
             { role: 'system', content: 'You are a helpful assistant that summarizes web pages.' },
             { role: 'user', content: `Summarize the following content:\n\n${pageContent}` }
