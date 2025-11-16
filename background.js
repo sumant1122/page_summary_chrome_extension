@@ -1,8 +1,15 @@
+function getFilenameFromPath(path) {
+  const parts = path.split(/[/\\]/); // Split by / or \
+  return parts[parts.length - 1];
+}
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   console.log('Background script received message:', request);
   if (request && request.action === 'saveSummary') {
     const summary = request.summary;
-    const filename = request.filename;
+    const suggestedPath = request.filename; // This is the path from settings
+
+    const filename = getFilenameFromPath(suggestedPath); // Extract just the filename
 
     const dataUrl = 'data:text/markdown;charset=utf-8,' + encodeURIComponent(summary);
 
