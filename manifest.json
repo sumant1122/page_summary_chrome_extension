@@ -3,6 +3,11 @@
   "name": "Page Summarizer Minimal",
   "version": "1.0",
   "description": "A minimal version of the Page Summarizer extension.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
   "action": {
     "default_popup": "popup.html"
   }
