@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const summary = summaryDiv.innerText;
     chrome.storage.local.get(['saveDestination'], (result) => {
       const saveDestination = result.saveDestination || 'summary.md';
+      console.log('Sending saveSummary message to background script.');
       chrome.runtime.sendMessage(
         {
           action: 'saveSummary',
@@ -42,7 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
           filename: saveDestination,
         },
         (response) => {
-          if (response.success) {
+          console.log('Received response from background script:', response);
+          if (response && response.success) {
             saveStatusDiv.textContent = 'Saved!';
           } else {
             saveStatusDiv.textContent = 'Failed to save.';

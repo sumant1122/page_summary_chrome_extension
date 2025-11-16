@@ -1,4 +1,5 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  console.log('Background script received message:', request);
   if (request.action === 'saveSummary') {
     const summary = request.summary;
     const filename = request.filename;
@@ -6,16 +7,19 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const blob = new Blob([summary], { type: 'text/markdown' });
     const url = URL.createObjectURL(blob);
 
+    console.log('Calling chrome.downloads.download with filename:', filename);
     chrome.downloads.download(
       {
         url: url,
         filename: filename,
-        saveAs: true, // This will always prompt the user to choose a location.
+        saveAs: true,
       },
       (downloadId) => {
         if (chrome.runtime.lastError) {
+          console.error('Download failed:', chrome.runtime.lastError.message);
           sendResponse({ success: false });
         } else {
+          console.log('Download initiated with ID:', downloadId);
           sendResponse({ success: true });
         }
       }
