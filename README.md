@@ -9,13 +9,19 @@ A minimalistic Chrome extension to summarize the content of any webpage using yo
 -   **Multiple AI Providers:** Choose between Gemini, OpenAI, and OpenRouter for summarization.
 -   **Secure API Key Storage:** Your API keys are stored securely in your browser's local storage.
 
+## Screenshots
+
+| Extension Icon | Popup Summary | Right-click Options | Generated Summary |
+| --- | --- | --- | --- |
+| ![Extension icon](screenshots/extensionIcon.png) | ![Extension summary popup](screenshots/ExtensionSummary.png) | ![Right-click menu to open options](screenshots/RightClickforOptions.png) | ![Summary results panel](screenshots/SummaryResult.png) |
+
 ## Getting Started
 
 Follow these instructions to install and configure the extension.
 
 ### Prerequisites
 
--   Google Chrome
+-   Chrome engine browser
 -   An API key from one of the supported providers (Gemini, OpenAI, or OpenRouter).
 
 ### Installation
